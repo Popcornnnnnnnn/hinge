@@ -32,6 +32,7 @@ final class DesktopPanel: NSPanel {
 final class LiveDesktop: NSObject, ObservableObject {
   @Published private(set) var isActive = false
   @Published private(set) var isStarting = false
+  @Published private(set) var isWaitingForDisplay = false
   @Published private(set) var sensorAvailable = false
   @Published private(set) var openAngle: Double
   @Published private(set) var effectStrength: Double
@@ -64,6 +65,7 @@ final class LiveDesktop: NSObject, ObservableObject {
   private var restoringAtLaunch = UserDefaults.standard.bool(forKey: "effectEnabled")
   private var wakeTask: Task<Void, Never>?
   private var displayTask: Task<Void, Never>?
+  private var lastCaptureRecovery = 0.0
   private var capturedDisplayID: CGDirectDisplayID?
   private var includedWindowIDs = Set<CGWindowID>()
 
@@ -211,6 +213,11 @@ final class LiveDesktop: NSObject, ObservableObject {
         localized: "Allow Hinge in Screen Recording settings, then quit and reopen it.")
       return
     }
+    guard builtInScreenAvailable else {
+      isWaitingForDisplay = true
+      return
+    }
+    isWaitingForDisplay = false
     isStarting = true
     sensor.setTracking(true)
     let session = UUID()
@@ -230,7 +237,9 @@ final class LiveDesktop: NSObject, ObservableObject {
             == display.displayID
         })
       else {
-        throw DesktopError.message(String(localized: "No built-in MacBook display was found."))
+        stop()
+        isWaitingForDisplay = true
+        return
       }
       let ownApplications = content.applications.filter {
         $0.processID == ProcessInfo.processInfo.processIdentifier
@@ -262,7 +271,14 @@ final class LiveDesktop: NSObject, ObservableObject {
         Task { @MainActor in
           guard let self, self.session == session else { return }
           self.stop()
-          self.error = failure.localizedDescription
+          let now = CACurrentMediaTime()
+          guard now - self.lastCaptureRecovery > 5 else {
+            self.error = failure.localizedDescription
+            return
+          }
+          self.lastCaptureRecovery = now
+          self.isWaitingForDisplay = true
+          self.refreshDisplay(after: .seconds(1))
         }
       }
       let stream = SCStream(filter: filter, configuration: configuration, delegate: frames)
@@ -308,7 +324,20 @@ final class LiveDesktop: NSObject, ObservableObject {
     } catch {
       guard self.session == session else { return }
       stop()
-      self.error = error.localizedDescription
+      if builtInScreenAvailable {
+        self.error = error.localizedDescription
+      } else {
+        isWaitingForDisplay = true
+      }
+    }
+  }
+
+  private var builtInScreenAvailable: Bool {
+    NSScreen.screens.contains {
+      guard
+        let number = $0.deviceDescription[NSDeviceDescriptionKey("NSScreenNumber")] as? NSNumber
+      else { return false }
+      return CGDisplayIsBuiltin(number.uint32Value) != 0
     }
   }
 
@@ -432,12 +461,14 @@ final class LiveDesktop: NSObject, ObservableObject {
     displayLink?.isPaused = true
   }
 
-  private func refreshDisplay() {
-    guard isActive, !resumeAfterWake else { return }
+  private func refreshDisplay(after delay: Duration = .milliseconds(300)) {
+    guard isActive || isWaitingForDisplay, !resumeAfterWake else { return }
     displayTask?.cancel()
     displayTask = Task { [weak self] in
-      do { try await Task.sleep(for: .milliseconds(300)) } catch { return }
-      guard let self, self.isActive, !self.resumeAfterWake else { return }
+      do { try await Task.sleep(for: delay) } catch { return }
+      guard let self, self.isActive || self.isWaitingForDisplay, !self.resumeAfterWake else {
+        return
+      }
       self.displayTask = nil
       self.stop()
       await self.start()
@@ -445,7 +476,7 @@ final class LiveDesktop: NSObject, ObservableObject {
   }
 
   private func suspendForSleep() {
-    resumeAfterWake = resumeAfterWake || isActive || isStarting
+    resumeAfterWake = resumeAfterWake || isActive || isStarting || isWaitingForDisplay
     stop(preserveResume: true)
     sensor.stop()
   }
@@ -503,6 +534,7 @@ final class LiveDesktop: NSObject, ObservableObject {
     includedWindowIDs = []
     isActive = false
     isStarting = false
+    isWaitingForDisplay = false
   }
 
   func shutDown() {

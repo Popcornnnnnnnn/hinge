@@ -39,14 +39,14 @@
 "Open position" = "Posição aberta";
 "Open the lid to your comfortable viewing position first." = "Primeiro abra a tampa no ângulo de visão que for confortável para você.";
 "Quit Hinge" = "Encerrar Hinge";
-"Relaunch" = "Reabrir";
 "Relaunch Hinge to switch languages." = "Reabra o Hinge para trocar de idioma.";
+"Relaunch" = "Reabrir";
 "Reset effect strength to 100%" = "Redefinir a intensidade do efeito para 100%";
 "Reset effect strength to default" = "Redefinir a intensidade do efeito para o padrão";
 "Save the lid angle you are viewing at right now" = "Salva o ângulo da tampa em que você está olhando agora";
 "Screen Recording" = "Gravação de Tela";
-"Set" = "Definir";
 "Set open position" = "Definir posição aberta";
+"Set" = "Definir";
 "Settings" = "Ajustes";
 "Settings…" = "Ajustes…";
 "Sides" = "Laterais";
@@ -62,6 +62,7 @@
 "Turn Hinge on to follow the lid." = "Ative o Hinge para seguir a tampa.";
 "Turn off" = "Desativar";
 "Turn on" = "Ativar";
+"Waiting for the built-in display to turn on." = "Aguardando a tela integrada ligar.";
 "Waiting for the lid angle sensor." = "Aguardando o sensor de ângulo da tampa.";
 "Waiting…" = "Aguardando…";
 "Your desktop bends as the lid closes." = "Sua mesa se dobra quando a tampa fecha.";

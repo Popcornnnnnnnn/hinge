@@ -39,14 +39,14 @@
 "Open position" = "Pozycja otwarcia";
 "Open the lid to your comfortable viewing position first." = "Najpierw otwórz pokrywę pod wygodnym kątem patrzenia.";
 "Quit Hinge" = "Zakończ Hinge";
-"Relaunch" = "Uruchom ponownie";
 "Relaunch Hinge to switch languages." = "Uruchom ponownie Hinge, aby zmienić język.";
+"Relaunch" = "Uruchom ponownie";
 "Reset effect strength to 100%" = "Przywróć siłę efektu do 100%";
 "Reset effect strength to default" = "Przywróć domyślną siłę efektu";
 "Save the lid angle you are viewing at right now" = "Zapisz kąt pokrywy, pod którym teraz patrzysz";
 "Screen Recording" = "Nagrywanie ekranu";
-"Set" = "Ustaw";
 "Set open position" = "Ustaw pozycję otwarcia";
+"Set" = "Ustaw";
 "Settings" = "Ustawienia";
 "Settings…" = "Ustawienia…";
 "Sides" = "Boki";
@@ -62,6 +62,7 @@
 "Turn Hinge on to follow the lid." = "Włącz Hinge, aby podążał za pokrywą.";
 "Turn off" = "Wyłącz";
 "Turn on" = "Włącz";
+"Waiting for the built-in display to turn on." = "Oczekiwanie na włączenie wbudowanego wyświetlacza.";
 "Waiting for the lid angle sensor." = "Oczekiwanie na czujnik kąta pokrywy.";
 "Waiting…" = "Oczekiwanie…";
 "Your desktop bends as the lid closes." = "Biurko wygina się, gdy zamykasz pokrywę.";

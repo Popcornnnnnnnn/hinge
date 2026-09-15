@@ -39,14 +39,14 @@
 "Open position" = "Vị trí mở";
 "Open the lid to your comfortable viewing position first." = "Hãy mở nắp đến góc nhìn thoải mái của bạn trước.";
 "Quit Hinge" = "Thoát Hinge";
-"Relaunch" = "Mở lại";
 "Relaunch Hinge to switch languages." = "Mở lại Hinge để đổi ngôn ngữ.";
+"Relaunch" = "Mở lại";
 "Reset effect strength to 100%" = "Đặt lại cường độ hiệu ứng về 100%";
 "Reset effect strength to default" = "Đặt lại cường độ hiệu ứng về mặc định";
 "Save the lid angle you are viewing at right now" = "Lưu góc nắp bạn đang nhìn lúc này";
 "Screen Recording" = "Ghi màn hình";
-"Set" = "Đặt";
 "Set open position" = "Đặt vị trí mở";
+"Set" = "Đặt";
 "Settings" = "Cài đặt";
 "Settings…" = "Cài đặt…";
 "Sides" = "Hai bên";
@@ -62,6 +62,7 @@
 "Turn Hinge on to follow the lid." = "Bật Hinge để theo nắp máy.";
 "Turn off" = "Tắt";
 "Turn on" = "Bật";
+"Waiting for the built-in display to turn on." = "Đang chờ màn hình tích hợp bật.";
 "Waiting for the lid angle sensor." = "Đang chờ cảm biến góc nắp.";
 "Waiting…" = "Đang chờ…";
 "Your desktop bends as the lid closes." = "Màn hình nền uốn cong khi bạn gập nắp.";

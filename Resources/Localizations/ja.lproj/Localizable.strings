@@ -39,14 +39,14 @@
 "Open position" = "開いた位置";
 "Open the lid to your comfortable viewing position first." = "先に、見やすい角度までふたを開いてください。";
 "Quit Hinge" = "Hingeを終了";
-"Relaunch" = "再起動";
 "Relaunch Hinge to switch languages." = "言語を切り替えるには、Hingeを再起動してください。";
+"Relaunch" = "再起動";
 "Reset effect strength to 100%" = "エフェクトの強さを100%に戻す";
 "Reset effect strength to default" = "エフェクトの強さをデフォルトに戻す";
 "Save the lid angle you are viewing at right now" = "いま見ているふたの角度を保存します";
 "Screen Recording" = "画面収録";
-"Set" = "設定";
 "Set open position" = "開いた位置を設定";
+"Set" = "設定";
 "Settings" = "設定";
 "Settings…" = "設定…";
 "Sides" = "両サイド";
@@ -62,6 +62,7 @@
 "Turn Hinge on to follow the lid." = "ふたの動きに追従するには、Hingeをオンにしてください。";
 "Turn off" = "オフにする";
 "Turn on" = "オンにする";
+"Waiting for the built-in display to turn on." = "内蔵ディスプレイがオンになるのを待っています。";
 "Waiting for the lid angle sensor." = "ふたの角度センサーを待機しています。";
 "Waiting…" = "待機中…";
 "Your desktop bends as the lid closes." = "ふたを閉じるとデスクトップが折れ曲がります。";

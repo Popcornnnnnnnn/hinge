@@ -39,14 +39,14 @@
 "Open position" = "열림 위치";
 "Open the lid to your comfortable viewing position first." = "먼저 편하게 보는 각도로 덮개를 여십시오.";
 "Quit Hinge" = "Hinge 종료";
-"Relaunch" = "다시 실행";
 "Relaunch Hinge to switch languages." = "언어를 바꾸려면 Hinge를 다시 실행하십시오.";
+"Relaunch" = "다시 실행";
 "Reset effect strength to 100%" = "효과 강도를 100%로 재설정";
 "Reset effect strength to default" = "효과 강도를 기본값으로 재설정";
 "Save the lid angle you are viewing at right now" = "지금 보고 있는 덮개 각도를 저장합니다";
 "Screen Recording" = "화면 기록";
-"Set" = "설정";
 "Set open position" = "열림 위치 설정";
+"Set" = "설정";
 "Settings" = "설정";
 "Settings…" = "설정…";
 "Sides" = "양옆";
@@ -62,6 +62,7 @@
 "Turn Hinge on to follow the lid." = "덮개를 따라가려면 Hinge를 켜십시오.";
 "Turn off" = "끄기";
 "Turn on" = "켜기";
+"Waiting for the built-in display to turn on." = "내장 디스플레이가 켜지기를 기다리는 중입니다.";
 "Waiting for the lid angle sensor." = "덮개 각도 센서를 기다리는 중입니다.";
 "Waiting…" = "기다리는 중…";
 "Your desktop bends as the lid closes." = "덮개를 닫으면 데스크탑이 휘어집니다.";

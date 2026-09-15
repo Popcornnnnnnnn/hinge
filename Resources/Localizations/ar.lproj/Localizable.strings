@@ -39,14 +39,14 @@
 "Open position" = "وضع الفتح";
 "Open the lid to your comfortable viewing position first." = "افتح الغطاء أولًا إلى زاوية المشاهدة المريحة لك.";
 "Quit Hinge" = "إنهاء Hinge";
-"Relaunch" = "إعادة التشغيل";
 "Relaunch Hinge to switch languages." = "أعد تشغيل Hinge لتغيير اللغة.";
+"Relaunch" = "إعادة التشغيل";
 "Reset effect strength to 100%" = "إعادة تعيين قوة التأثير إلى 100٪";
 "Reset effect strength to default" = "إعادة تعيين قوة التأثير إلى القيمة الافتراضية";
 "Save the lid angle you are viewing at right now" = "حفظ زاوية الغطاء التي تنظر منها الآن";
 "Screen Recording" = "تسجيل الشاشة";
-"Set" = "تعيين";
 "Set open position" = "تعيين وضع الفتح";
+"Set" = "تعيين";
 "Settings" = "الإعدادات";
 "Settings…" = "الإعدادات…";
 "Sides" = "الجانبان";
@@ -62,6 +62,7 @@
 "Turn Hinge on to follow the lid." = "شغّل Hinge ليتتبّع الغطاء.";
 "Turn off" = "إيقاف";
 "Turn on" = "تشغيل";
+"Waiting for the built-in display to turn on." = "في انتظار تشغيل الشاشة المدمجة.";
 "Waiting for the lid angle sensor." = "بانتظار مستشعر زاوية الغطاء.";
 "Waiting…" = "جارٍ الانتظار…";
 "Your desktop bends as the lid closes." = "ينحني سطح المكتب عند إغلاق الغطاء.";

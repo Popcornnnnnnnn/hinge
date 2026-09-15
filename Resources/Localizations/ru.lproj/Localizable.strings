@@ -39,14 +39,14 @@
 "Open position" = "Положение открытия";
 "Open the lid to your comfortable viewing position first." = "Сначала откройте крышку до удобного угла обзора.";
 "Quit Hinge" = "Завершить Hinge";
-"Relaunch" = "Перезапустить";
 "Relaunch Hinge to switch languages." = "Перезапустите Hinge, чтобы сменить язык.";
+"Relaunch" = "Перезапустить";
 "Reset effect strength to 100%" = "Вернуть силу эффекта к 100 %";
 "Reset effect strength to default" = "Вернуть силу эффекта по умолчанию";
 "Save the lid angle you are viewing at right now" = "Сохранить угол крышки, под которым вы смотрите сейчас";
 "Screen Recording" = "Запись экрана";
-"Set" = "Задать";
 "Set open position" = "Задать положение открытия";
+"Set" = "Задать";
 "Settings" = "Настройки";
 "Settings…" = "Настройки…";
 "Sides" = "Края";
@@ -62,6 +62,7 @@
 "Turn Hinge on to follow the lid." = "Включите Hinge, чтобы он следовал за крышкой.";
 "Turn off" = "Выключить";
 "Turn on" = "Включить";
+"Waiting for the built-in display to turn on." = "Ожидание включения встроенного дисплея.";
 "Waiting for the lid angle sensor." = "Ожидание датчика угла крышки.";
 "Waiting…" = "Ожидание…";
 "Your desktop bends as the lid closes." = "Рабочий стол изгибается, когда вы закрываете крышку.";

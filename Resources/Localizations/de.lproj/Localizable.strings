@@ -39,14 +39,14 @@
 "Open position" = "Öffnungsposition";
 "Open the lid to your comfortable viewing position first." = "Öffne den Deckel zuerst auf deinen bevorzugten Blickwinkel.";
 "Quit Hinge" = "Hinge beenden";
-"Relaunch" = "Neu starten";
 "Relaunch Hinge to switch languages." = "Starte Hinge neu, um die Sprache zu wechseln.";
+"Relaunch" = "Neu starten";
 "Reset effect strength to 100%" = "Effektstärke auf 100 % zurücksetzen";
 "Reset effect strength to default" = "Effektstärke auf Standard zurücksetzen";
 "Save the lid angle you are viewing at right now" = "Speichert den Deckelwinkel, in dem du gerade auf den Bildschirm schaust";
 "Screen Recording" = "Bildschirmaufnahme";
-"Set" = "Festlegen";
 "Set open position" = "Öffnungsposition festlegen";
+"Set" = "Festlegen";
 "Settings" = "Einstellungen";
 "Settings…" = "Einstellungen …";
 "Sides" = "Seiten";
@@ -62,6 +62,7 @@
 "Turn Hinge on to follow the lid." = "Schalte Hinge ein, damit es dem Deckel folgt.";
 "Turn off" = "Ausschalten";
 "Turn on" = "Einschalten";
+"Waiting for the built-in display to turn on." = "Warten, bis das integrierte Display eingeschaltet wird.";
 "Waiting for the lid angle sensor." = "Warten auf den Deckelwinkelsensor.";
 "Waiting…" = "Warten …";
 "Your desktop bends as the lid closes." = "Dein Schreibtisch biegt sich beim Zuklappen.";

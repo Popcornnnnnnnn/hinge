@@ -39,14 +39,14 @@
 "Open position" = "Açık konum";
 "Open the lid to your comfortable viewing position first." = "Önce kapağı rahat görüş açınıza kadar açın.";
 "Quit Hinge" = "Hinge’den Çık";
-"Relaunch" = "Yeniden Başlat";
 "Relaunch Hinge to switch languages." = "Dili değiştirmek için Hinge’i yeniden başlatın.";
+"Relaunch" = "Yeniden Başlat";
 "Reset effect strength to 100%" = "Efekt gücünü %100’e sıfırla";
 "Reset effect strength to default" = "Efekt gücünü varsayılana sıfırla";
 "Save the lid angle you are viewing at right now" = "Şu anda baktığınız kapak açısını kaydeder";
 "Screen Recording" = "Ekran Kaydı";
-"Set" = "Ayarla";
 "Set open position" = "Açık konumu ayarla";
+"Set" = "Ayarla";
 "Settings" = "Ayarlar";
 "Settings…" = "Ayarlar…";
 "Sides" = "Kenarlar";
@@ -62,6 +62,7 @@
 "Turn Hinge on to follow the lid." = "Kapağı takip etmesi için Hinge’i açın.";
 "Turn off" = "Kapat";
 "Turn on" = "Aç";
+"Waiting for the built-in display to turn on." = "Yerleşik ekranın açılması bekleniyor.";
 "Waiting for the lid angle sensor." = "Kapak açısı sensörü bekleniyor.";
 "Waiting…" = "Bekleniyor…";
 "Your desktop bends as the lid closes." = "Kapak kapanırken masaüstünüz bükülür.";

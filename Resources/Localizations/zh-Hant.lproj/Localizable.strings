@@ -39,14 +39,14 @@
 "Open position" = "開啟角度";
 "Open the lid to your comfortable viewing position first." = "請先把螢幕打開到你習慣的觀看角度。";
 "Quit Hinge" = "結束 Hinge";
-"Relaunch" = "重新開啟";
 "Relaunch Hinge to switch languages." = "重新開啟 Hinge 以切換語言。";
+"Relaunch" = "重新開啟";
 "Reset effect strength to 100%" = "將效果強度重置為 100%";
 "Reset effect strength to default" = "將效果強度重置為預設值";
 "Save the lid angle you are viewing at right now" = "儲存你目前觀看時的螢幕角度";
 "Screen Recording" = "螢幕錄製";
-"Set" = "設定";
 "Set open position" = "設為開啟角度";
+"Set" = "設定";
 "Settings" = "設定";
 "Settings…" = "設定⋯";
 "Sides" = "兩側";
@@ -62,6 +62,7 @@
 "Turn Hinge on to follow the lid." = "開啟 Hinge 以跟隨螢幕開合。";
 "Turn off" = "關閉";
 "Turn on" = "開啟";
+"Waiting for the built-in display to turn on." = "正在等待內建顯示器開啟。";
 "Waiting for the lid angle sensor." = "正在等待螢幕開合角度感測器。";
 "Waiting…" = "正在等待⋯";
 "Your desktop bends as the lid closes." = "闔上螢幕時桌面會隨之彎折。";

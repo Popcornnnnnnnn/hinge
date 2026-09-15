@@ -39,14 +39,14 @@
 "Open position" = "Openstand";
 "Open the lid to your comfortable viewing position first." = "Open de klep eerst tot je favoriete kijkhoek.";
 "Quit Hinge" = "Stop Hinge";
-"Relaunch" = "Opnieuw starten";
 "Relaunch Hinge to switch languages." = "Start Hinge opnieuw om van taal te wisselen.";
+"Relaunch" = "Opnieuw starten";
 "Reset effect strength to 100%" = "Zet effectsterkte terug naar 100%";
 "Reset effect strength to default" = "Zet effectsterkte terug naar standaard";
 "Save the lid angle you are viewing at right now" = "Bewaar de klephoek waarmee je nu kijkt";
 "Screen Recording" = "Schermopname";
-"Set" = "Stel in";
 "Set open position" = "Stel openstand in";
+"Set" = "Stel in";
 "Settings" = "Instellingen";
 "Settings…" = "Instellingen…";
 "Sides" = "Zijkanten";
@@ -62,6 +62,7 @@
 "Turn Hinge on to follow the lid." = "Zet Hinge aan om de klep te volgen.";
 "Turn off" = "Zet uit";
 "Turn on" = "Zet aan";
+"Waiting for the built-in display to turn on." = "Wachten tot het ingebouwde scherm wordt ingeschakeld.";
 "Waiting for the lid angle sensor." = "Wachten op de klephoeksensor.";
 "Waiting…" = "Wachten…";
 "Your desktop bends as the lid closes." = "Je bureaublad buigt mee als de klep dichtgaat.";

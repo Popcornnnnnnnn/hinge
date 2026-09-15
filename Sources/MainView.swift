@@ -156,6 +156,9 @@ struct MainView: View {
   private var subtitle: String {
     if desktop.isActive { return String(localized: "Your desktop bends as the lid closes.") }
     if desktop.isStarting { return String(localized: "Getting the desktop and the sensor ready.") }
+    if desktop.isWaitingForDisplay {
+      return String(localized: "Waiting for the built-in display to turn on.")
+    }
     if !desktop.sensorAvailable { return String(localized: "Waiting for the lid angle sensor.") }
     if desktop.isEnabled { return String(localized: "Hinge is on but not running yet.") }
     return String(localized: "Turn Hinge on to follow the lid.")

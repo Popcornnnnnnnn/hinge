@@ -39,14 +39,14 @@
 "Open position" = "Posizione di apertura";
 "Open the lid to your comfortable viewing position first." = "Apri prima lo schermo all’angolazione di visione che preferisci.";
 "Quit Hinge" = "Esci da Hinge";
-"Relaunch" = "Riapri";
 "Relaunch Hinge to switch languages." = "Riapri Hinge per cambiare lingua.";
+"Relaunch" = "Riapri";
 "Reset effect strength to 100%" = "Riporta l’intensità dell’effetto al 100%";
 "Reset effect strength to default" = "Riporta l’intensità dell’effetto al valore predefinito";
 "Save the lid angle you are viewing at right now" = "Salva l’angolo dello schermo con cui stai guardando adesso";
 "Screen Recording" = "Registrazione schermo";
-"Set" = "Imposta";
 "Set open position" = "Imposta posizione di apertura";
+"Set" = "Imposta";
 "Settings" = "Impostazioni";
 "Settings…" = "Impostazioni…";
 "Sides" = "Lati";
@@ -62,6 +62,7 @@
 "Turn Hinge on to follow the lid." = "Attiva Hinge per seguire lo schermo.";
 "Turn off" = "Disattiva";
 "Turn on" = "Attiva";
+"Waiting for the built-in display to turn on." = "In attesa che lo schermo integrato si accenda.";
 "Waiting for the lid angle sensor." = "In attesa del sensore dell’angolo dello schermo.";
 "Waiting…" = "In attesa…";
 "Your desktop bends as the lid closes." = "La scrivania si piega quando chiudi lo schermo.";
