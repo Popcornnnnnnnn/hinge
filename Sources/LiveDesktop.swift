@@ -42,9 +42,13 @@ final class LiveDesktop: NSObject, ObservableObject {
   @Published private(set) var needsPermission = false
   @Published private(set) var isEnabled = UserDefaults.standard.bool(forKey: "effectEnabled")
   private static let missingSensorMessage =
-    "This Mac doesn't appear to have a lid angle sensor, so Hinge can't follow the lid."
+    String(
+      localized:
+        "This Mac doesn't appear to have a lid angle sensor, so Hinge can't follow the lid.")
   private static let sensorDroppedMessage =
-    "The lid sensor stopped responding. Hinge turns back on as soon as it reconnects."
+    String(
+      localized:
+        "The lid sensor stopped responding. Hinge turns back on as soon as it reconnects.")
   private let sensor = LidSensor()
   private var sensorMissing = false
   private let motion: LidMotion
@@ -153,7 +157,7 @@ final class LiveDesktop: NSObject, ObservableObject {
 
   func setOpenPosition() {
     guard let angle = motion.calibrate() else {
-      error = "Open the lid to your comfortable viewing position first."
+      error = String(localized: "Open the lid to your comfortable viewing position first.")
       return
     }
     openAngle = angle
@@ -203,7 +207,8 @@ final class LiveDesktop: NSObject, ObservableObject {
       CGPreflightScreenCaptureAccess() || (promptForPermission && CGRequestScreenCaptureAccess())
     guard hasScreenAccess else {
       needsPermission = true
-      error = "Allow Hinge in Screen Recording settings, then quit and reopen it."
+      error = String(
+        localized: "Allow Hinge in Screen Recording settings, then quit and reopen it.")
       return
     }
     isStarting = true
@@ -225,7 +230,7 @@ final class LiveDesktop: NSObject, ObservableObject {
             == display.displayID
         })
       else {
-        throw DesktopError.message("No built-in MacBook display was found.")
+        throw DesktopError.message(String(localized: "No built-in MacBook display was found."))
       }
       let ownApplications = content.applications.filter {
         $0.processID == ProcessInfo.processInfo.processIdentifier
@@ -271,7 +276,8 @@ final class LiveDesktop: NSObject, ObservableObject {
         guard let self, self.session == session else { return }
         if let failure {
           self.stop()
-          self.error = "The desktop renderer stopped: \(failure.localizedDescription)"
+          self.error = String(
+            localized: "The desktop renderer stopped: \(failure.localizedDescription)")
         }
       }
       renderer.onRest = { [weak self] in self?.restOverlay() }
@@ -287,7 +293,9 @@ final class LiveDesktop: NSObject, ObservableObject {
         guard CACurrentMediaTime() < deadline else {
           needsPermission = true
           throw DesktopError.message(
-            "No desktop frames arrived. Check Screen Recording permission and reopen Hinge.")
+            String(
+              localized:
+                "No desktop frames arrived. Check Screen Recording permission and reopen Hinge."))
         }
         try await Task.sleep(for: .milliseconds(10))
       }
@@ -334,7 +342,8 @@ final class LiveDesktop: NSObject, ObservableObject {
     } catch {
       guard session == currentSession else { return }
       stop()
-      self.error = "Could not update the captured windows: \(error.localizedDescription)"
+      self.error = String(
+        localized: "Could not update the captured windows: \(error.localizedDescription)")
     }
   }
 
