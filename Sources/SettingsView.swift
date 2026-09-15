@@ -23,6 +23,21 @@ struct SettingsView: View {
   private var look: some View {
     SettingsGroup(title: String(localized: "Look")) {
       SettingsRow(
+        "drop.fill", tint: .cyan, title: String(localized: "Effect"),
+        subtitle: desktop.foldMode.subtitle
+      ) {
+        Picker(
+          "Effect",
+          selection: Binding(get: { desktop.foldMode }, set: { desktop.setFoldMode($0) })
+        ) {
+          ForEach(FoldMode.allCases) { mode in Text(mode.title).tag(mode) }
+        }
+        .labelsHidden()
+        .frame(width: 130)
+        .controlSize(.small)
+      }
+      SettingsDivider()
+      SettingsRow(
         "slider.horizontal.3", tint: .orange, title: String(localized: "Effect strength"),
         subtitle: strength
       ) {
@@ -47,52 +62,56 @@ struct SettingsView: View {
           .accessibilityLabel("Reset effect strength to default")
         }
       }
-      SettingsDivider()
-      SettingsRow(
-        "square.lefthalf.filled", tint: .indigo, title: String(localized: "Sides"),
-        subtitle: String(localized: "Beside the folded desktop")
-      ) {
-        Picker(
-          "Sides",
-          selection: Binding(get: { desktop.sideFill }, set: { desktop.setSideFill($0) })
+      if desktop.foldMode == .classic {
+        SettingsDivider()
+        SettingsRow(
+          "square.lefthalf.filled", tint: .indigo, title: String(localized: "Sides"),
+          subtitle: String(localized: "Beside the folded desktop")
         ) {
-          Text("Blur").tag(SideFill.blur)
-          Text("Black").tag(SideFill.black)
+          Picker(
+            "Sides",
+            selection: Binding(get: { desktop.sideFill }, set: { desktop.setSideFill($0) })
+          ) {
+            Text("Blur").tag(SideFill.blur)
+            Text("Black").tag(SideFill.black)
+          }
+          .pickerStyle(.segmented)
+          .labelsHidden()
+          .fixedSize()
+          .controlSize(.small)
         }
-        .pickerStyle(.segmented)
-        .labelsHidden()
-        .fixedSize()
-        .controlSize(.small)
-      }
-      SettingsDivider()
-      SettingsRow(
-        "crop", tint: .teal, title: String(localized: "Crop from the top"),
-        subtitle: String(localized: "The top of the desktop slides out of view as the lid closes.")
-      ) {
-        Toggle(
-          "Crop from the top",
-          isOn: Binding(get: { desktop.cropsTop }, set: { desktop.setCropsTop($0) })
-        )
-        .toggleStyle(.switch)
-        .controlSize(.small)
-        .labelsHidden()
-      }
-      SettingsDivider()
-      SettingsRow(
-        "camera.aperture", tint: .purple, title: String(localized: "Blur by distance"),
-        subtitle: desktop.blursByDistance
-          ? String(
-            localized:
-              "Blur grows with distance from the open screen, so the hinge edge stays sharp.")
-          : String(localized: "Blur builds toward the top and fades out near the hinge.")
-      ) {
-        Toggle(
-          "Blur by distance",
-          isOn: Binding(get: { desktop.blursByDistance }, set: { desktop.setBlursByDistance($0) })
-        )
-        .toggleStyle(.switch)
-        .controlSize(.small)
-        .labelsHidden()
+        SettingsDivider()
+        SettingsRow(
+          "crop", tint: .teal, title: String(localized: "Crop from the top"),
+          subtitle: String(
+            localized: "The top of the desktop slides out of view as the lid closes.")
+        ) {
+          Toggle(
+            "Crop from the top",
+            isOn: Binding(get: { desktop.cropsTop }, set: { desktop.setCropsTop($0) })
+          )
+          .toggleStyle(.switch)
+          .controlSize(.small)
+          .labelsHidden()
+        }
+        SettingsDivider()
+        SettingsRow(
+          "camera.aperture", tint: .purple, title: String(localized: "Blur by distance"),
+          subtitle: desktop.blursByDistance
+            ? String(
+              localized:
+                "Blur grows with distance from the open screen, so the hinge edge stays sharp.")
+            : String(localized: "Blur builds toward the top and fades out near the hinge.")
+        ) {
+          Toggle(
+            "Blur by distance",
+            isOn: Binding(
+              get: { desktop.blursByDistance }, set: { desktop.setBlursByDistance($0) })
+          )
+          .toggleStyle(.switch)
+          .controlSize(.small)
+          .labelsHidden()
+        }
       }
     }
   }

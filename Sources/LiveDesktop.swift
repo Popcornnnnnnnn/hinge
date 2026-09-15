@@ -39,6 +39,7 @@ final class LiveDesktop: NSObject, ObservableObject {
   @Published private(set) var sideFill: SideFill
   @Published private(set) var cropsTop: Bool
   @Published private(set) var blursByDistance: Bool
+  @Published private(set) var foldMode: FoldMode
   @Published private(set) var error: String?
   @Published private(set) var needsPermission = false
   @Published private(set) var isEnabled = UserDefaults.standard.bool(forKey: "effectEnabled")
@@ -80,6 +81,8 @@ final class LiveDesktop: NSObject, ObservableObject {
     sideFill = UserDefaults.standard.string(forKey: "sideFill").flatMap(SideFill.init) ?? .blur
     cropsTop = UserDefaults.standard.object(forKey: "cropsTop") as? Bool ?? true
     blursByDistance = UserDefaults.standard.object(forKey: "blursByDistance") as? Bool ?? true
+    foldMode =
+      UserDefaults.standard.string(forKey: "foldMode").flatMap(FoldMode.init) ?? .liquidEdge
     motion = LidMotion(openAngle: openAngle)
     super.init()
     let motion = motion
@@ -196,6 +199,14 @@ final class LiveDesktop: NSObject, ObservableObject {
     renderer?.blursByDistance = enabled
   }
 
+  func setFoldMode(_ mode: FoldMode) {
+    guard mode != foldMode else { return }
+    foldMode = mode
+    UserDefaults.standard.set(mode.rawValue, forKey: "foldMode")
+    renderer?.foldMode = mode
+    if motion.isClosing { beginRendering() }
+  }
+
   func start(promptForPermission: Bool = true) async {
     guard !isStarting, !isActive else { return }
     error = nil
@@ -228,6 +239,7 @@ final class LiveDesktop: NSObject, ObservableObject {
       renderer.sideFill = sideFill
       renderer.cropsTop = cropsTop
       renderer.blursByDistance = blursByDistance
+      renderer.foldMode = foldMode
       let content = try await SCShareableContent.excludingDesktopWindows(
         false, onScreenWindowsOnly: false)
       guard self.session == session else { return }

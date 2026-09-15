@@ -10,11 +10,38 @@ struct FoldParameters {
   var taper = DesktopRenderer.taper
   var crop: Float = 0
   var depth: Float = 0
+  var velocity: Float = 0
+  var ripple: Float = 0
+  var time: Float = 0
+  var mode: Float = 1
 }
 
 enum SideFill: String {
   case blur
   case black
+}
+
+enum FoldMode: String, CaseIterable, Identifiable {
+  case classic
+  case liquidEdge
+
+  var id: String { rawValue }
+
+  var title: String {
+    switch self {
+    case .classic: String(localized: "Classic")
+    case .liquidEdge: String(localized: "Liquid Edge")
+    }
+  }
+
+  var subtitle: String {
+    switch self {
+    case .classic: String(localized: "The original fold and progressive blur")
+    case .liquidEdge: String(localized: "A responsive liquid glass band along the top edge")
+    }
+  }
+
+  var shaderValue: Float { self == .classic ? 0 : 1 }
 }
 
 final class DesktopRenderer: NSObject, MTKViewDelegate {
@@ -41,6 +68,7 @@ final class DesktopRenderer: NSObject, MTKViewDelegate {
   private let motion: LidMotion
   private var wasPresented = false
   var effectStrength: Float = 1
+  var foldMode = FoldMode.liquidEdge
   var cropsTop = true
   var blursByDistance = true
   var sideFill = SideFill.blur {
@@ -127,7 +155,9 @@ final class DesktopRenderer: NSObject, MTKViewDelegate {
         pass.colorAttachments[0].loadAction = .clear
         pass.colorAttachments[0].storeAction = .store
         guard
-          self.encodeFold(command: command, pass: pass, texture: source, progress: 0.5, opacity: 1)
+          self.encodeFold(
+            command: command, pass: pass, texture: source,
+            sample: FoldSample(progress: 0.5, velocity: 0, ripple: 0), opacity: 1)
         else {
           throw DesktopError.message(String(localized: "Could not prepare the fold pipeline."))
         }
@@ -235,7 +265,9 @@ final class DesktopRenderer: NSObject, MTKViewDelegate {
   func draw(in view: MTKView) {
     let time = presentationTime ?? CACurrentMediaTime()
     presentationTime = nil
-    let progress = motion.sample(at: time) * effectStrength
+    var sample = motion.sample(at: time)
+    sample.progress *= effectStrength
+    let progress = sample.progress
     guard progress > 0 else {
       clear(view)
       return
@@ -263,10 +295,10 @@ final class DesktopRenderer: NSObject, MTKViewDelegate {
     }
     let blend = min(progress / 0.025, 1)
     let opacity = blend * blend * (3 - 2 * blend)
-    pass.colorAttachments[0].clearColor = MTLClearColorMake(0, 0, 0, Double(opacity))
+    pass.colorAttachments[0].clearColor = MTLClearColorMake(0, 0, 0, 0)
     guard
       encodeFold(
-        command: command, pass: pass, texture: texture, progress: progress, opacity: opacity)
+        command: command, pass: pass, texture: texture, sample: sample, opacity: opacity)
     else {
       blurredGeneration = nil
       inFlight.signal()
@@ -291,15 +323,18 @@ final class DesktopRenderer: NSObject, MTKViewDelegate {
   }
 
   private func encodeFold(
-    command: MTLCommandBuffer, pass: MTLRenderPassDescriptor, texture: MTLTexture, progress: Float,
+    command: MTLCommandBuffer, pass: MTLRenderPassDescriptor, texture: MTLTexture,
+    sample: FoldSample,
     opacity: Float
   ) -> Bool {
     guard let encoder = command.makeRenderCommandEncoder(descriptor: pass) else { return false }
     let paddedWidth = Float(sideTexture?.width ?? 1)
     var parameters = FoldParameters(
-      progress: progress, opacity: opacity, blurInset: Float(blurPadding) / paddedWidth,
+      progress: sample.progress, opacity: opacity, blurInset: Float(blurPadding) / paddedWidth,
       blurSpan: (paddedWidth - Float(2 * blurPadding)) / paddedWidth, crop: cropsTop ? 1 : 0,
-      depth: blursByDistance ? 1 : 0)
+      depth: blursByDistance ? 1 : 0, velocity: sample.velocity, ripple: sample.ripple,
+      time: Float(CACurrentMediaTime().truncatingRemainder(dividingBy: 1000)),
+      mode: foldMode.shaderValue)
     encoder.setRenderPipelineState(pipeline)
     encoder.setVertexBytes(&parameters, length: MemoryLayout<FoldParameters>.stride, index: 0)
     encoder.setFragmentBytes(&parameters, length: MemoryLayout<FoldParameters>.stride, index: 0)

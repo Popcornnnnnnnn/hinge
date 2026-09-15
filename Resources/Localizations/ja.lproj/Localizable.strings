@@ -73,3 +73,9 @@
 "Your desktop bends as the lid closes." = "ふたを閉じるとデスクトップが折れ曲がります。";
 "Your desktop follows your lid." = "デスクトップがふたの動きに追従します。";
 "⌃⌥H anywhere" = "どこからでも⌃⌥H";
+"A liquid glass edge follows the lid." = "液体ガラスのエッジが画面の開閉に追従します。";
+"A responsive liquid glass band along the top edge" = "上端に沿って反応する液体ガラスの帯";
+"Classic" = "クラシック";
+"Effect" = "エフェクト";
+"Liquid Edge" = "リキッドエッジ";
+"The original fold and progressive blur" = "オリジナルの折りたたみと段階的なぼかし";

@@ -154,7 +154,11 @@ struct MainView: View {
   }
 
   private var subtitle: String {
-    if desktop.isActive { return String(localized: "Your desktop bends as the lid closes.") }
+    if desktop.isActive {
+      return desktop.foldMode == .classic
+        ? String(localized: "Your desktop bends as the lid closes.")
+        : String(localized: "A liquid glass edge follows the lid.")
+    }
     if desktop.isStarting { return String(localized: "Getting the desktop and the sensor ready.") }
     if desktop.isWaitingForDisplay {
       return String(localized: "Waiting for the built-in display to turn on.")

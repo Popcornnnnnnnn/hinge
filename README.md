@@ -1,12 +1,12 @@
 # Hinge
 
-Give your MacBook desktop a little bend. Close the lid and watch your screen softly fold and blur. Open it and everything comes back.
+Give your MacBook desktop a little bend. Choose the original Classic fold or Liquid Edge, a responsive glass band that ripples across the top of the display as the lid closes. Open it and everything comes back.
 
 ## For the nerds
 
 Hinge reads the lid angle as often as the sensor updates it, in hundredths of a degree where your Mac reports them, and turns it into a continuous animation. Slow tilt, slow bend. Quick tilt, quick bend. A little smoothing fills in between readings.
 
-ScreenCaptureKit supplies your live desktop, and Metal adds perspective and progressive blur at 60 fps. Everything stays in memory on your Mac. No recordings, no uploads.
+ScreenCaptureKit supplies your live desktop, and Metal renders either perspective with progressive blur or a localized refractive edge at 60 fps. Everything stays in memory on your Mac. No recordings, no uploads.
 
 ## Install
 

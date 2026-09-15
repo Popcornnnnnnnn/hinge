@@ -1,6 +1,14 @@
 import Foundation
 import QuartzCore
 
+struct FoldSample {
+  var progress: Float
+  var velocity: Float
+  var ripple: Float
+
+  static let rest = FoldSample(progress: 0, velocity: 0, ripple: 0)
+}
+
 final class LidMotion {
   private let lock = NSLock()
   private var angle: Double?
@@ -14,6 +22,7 @@ final class LidMotion {
   private var displayVelocity = 0.0
   private var lastFrame = 0.0
   private var lastSample = 0.0
+  private var ripple = 0.0
 
   init(openAngle: Double = 100) {
     baseline = openAngle
@@ -40,7 +49,9 @@ final class LidMotion {
         direction = -1
       }
       let measuredVelocity = (nextAngle - trackedAngle) / delta
+      let previousVelocity = angularVelocity
       angularVelocity += (measuredVelocity - angularVelocity) * (1 - exp(-delta / 0.06))
+      ripple = max(ripple, min(abs(measuredVelocity - previousVelocity) / 180, 1))
       self.trackedAngle = nextAngle
     } else {
       trackedAngle = value
@@ -80,6 +91,7 @@ final class LidMotion {
     displayed = 0
     displayVelocity = 0
     lastFrame = 0
+    ripple = 0
   }
 
   private func updateTarget(at time: Double = CACurrentMediaTime()) {
@@ -92,13 +104,14 @@ final class LidMotion {
     target = min(max((baseline - 0.6 - trackedAngle - prediction) / (baseline - 8.6), 0), 1)
   }
 
-  func sample(at time: Double = CACurrentMediaTime()) -> Float {
+  func sample(at time: Double = CACurrentMediaTime()) -> FoldSample {
     lock.lock()
     defer { lock.unlock() }
     guard enabled, angle != nil else {
       displayed = 0
       displayVelocity = 0
-      return 0
+      ripple = 0
+      return .rest
     }
     updateTarget(at: time)
     let elapsed = time - lastFrame
@@ -126,7 +139,11 @@ final class LidMotion {
       displayed = min(max(displayed, 0), 1)
       displayVelocity = 0
     }
-    return Float(displayed)
+    ripple *= exp(-delta / 0.24)
+    let currentVelocity = velocity(at: time)
+    return FoldSample(
+      progress: Float(displayed), velocity: Float(min(max(currentVelocity / 100, -1), 1)),
+      ripple: Float(ripple))
   }
 
   private func velocity(at time: Double) -> Double {
