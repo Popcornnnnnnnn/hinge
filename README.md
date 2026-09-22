@@ -1,5 +1,7 @@
 # Hinge
 
+**English** · [简体中文](README.zh-CN.md)
+
 Give your MacBook desktop a little bend. Close the lid and watch your screen softly fold and blur. Open it and everything comes back.
 
 ## For the nerds
